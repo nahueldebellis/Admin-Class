@@ -41,13 +41,5 @@
 		}
 
 	}
-	$g = $_POST["group"];
-	
-	$sql = "Select * from groups where grupo='$g'";
-	$resul = $conn->query($sql);
-	while($row = $resul->fetch_assoc()){
-		echo $row["presencia"]." ".$row["nombre"]." ".$row["grupo"]."<br>";
-	}
-	$conn->close();
 
 ?>
