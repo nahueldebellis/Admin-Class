@@ -18,8 +18,19 @@
 			$i++;
 		}
 			?>
-			<input type="text" name="group" id="group">
-			<button>Buscar Grupo</button>
+
+			<div>
+				<h6>Busqueda: (Elija uno)</h6><br>
+				<label>Por Grupo: </label>
+				<input type="checkbox" name="Grupo"><br>
+				<label>Por Nombre: </label>
+				<input type="checkbox" name="Name"><br>
+				<label>Por Promedio: </label>
+				<input type="checkbox" name="Promedio"><br>
+
+				<input type="text" name="group" id="group">
+				<button>Buscar</button>
+			</div>
 	</form>
 
 	<button onclick="Pase()">Random Group</button>
@@ -32,5 +43,7 @@
 			rand = Math.floor(Math.random()*(max-1) + 1);
 			alert("Grupo "+rand);
 		}
+
+
 	</script>
 </html>
