@@ -1,14 +1,11 @@
 <?php
+	include "../model/alumnos.php";
+	$a = new Alumnos();
+
 	$max = $_GET["g"];
 	$al = $_GET["a"];
 	$alumnos = array();
 	$idGrupos = array();
-
-	$server = "localhost";
-	$user = "root";
-	$password = "";
-	$db = "Grupos";
-	$connexion = new mysqli($server, $user, $password, $db);
 
 	for($i=1; $i <= $max; $i++){
 		for($j=1; $j <= $al; $j++){
@@ -19,15 +16,12 @@
 				$b = 0;
 			}
 			$group = $_POST["G".$i."A".$j];
-			$alumnos[$group] = $_POST["G".$i];
-			$idGrupos[$i] = $_POST["G".$i];
+			$alumno = $_POST["G".$i];#grupo
 
-			$sql = "insert into groups values ('$b', '$group', '".$_POST["G".$i]."')";
-			if(!$connexion->query($sql)){
-				echo "<br>".$connexion->error."<br>";
-			}
+			$idGrupos[$i] = $_POST["G".$i];
+			$a->insert($b, $alumno, $group);
 		}
 	}
-	$connexion->close();
+
 	
 ?>

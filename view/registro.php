@@ -25,11 +25,11 @@
 		?>
 	</form>
 	<button onclick="a()">registrar alumnos</button>
-	<script type="text/javascript">
 
+	<script type="text/javascript">
 		function a(){
 			document.getElementById("fr").method = "POST";
-			document.getElementById("fr").action="db/guardarAlumnos.php?g=<?php echo $max; ?>&a=<?php echo $alumnos; ?>";
+			document.getElementById("fr").action="../controller/registro.php?g=<?php echo $max; ?>&a=<?php echo $alumnos;?>";
 			document.getElementById("fr").submit();
 			
 		}
