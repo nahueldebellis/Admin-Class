@@ -1,0 +1,36 @@
+*{
+	margin:0px;
+	padding:0px;
+}
+body{
+	color:#1C2833;
+	background-color: #FCF3CF;
+}
+
+header h1{
+	text-align: center;
+	font-size: 90px;
+}
+
+header nav{
+	text-align: center;
+}
+
+header nav li{
+	display:inline-block;
+	margin-right: 100px;
+}
+
+header nav li a{
+	text-decoration: none;
+	color:#7D6608;
+}
+
+aside{
+	width: 200px;
+	float:right;
+}
+
+.center{
+	text-align: center;
+}
