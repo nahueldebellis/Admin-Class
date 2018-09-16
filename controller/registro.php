@@ -3,25 +3,23 @@
 	$a = new Alumnos();
 
 	$max = $_GET["g"];
-	$al = $_GET["a"];
 	$alumnos = array();
 	$idGrupos = array();
-
-	for($i=1; $i <= $max; $i++){
-		for($j=1; $j <= $al; $j++){
-			if(isset($_POST["presencia".$i.$j])){
+		for($j=1; $j <= $max; $j++){
+			if(isset($_POST["presencia".$j])){
 				$b = 1;
 			}
 			else{
 				$b = 0;
 			}
-			$group = $_POST["G".$i."A".$j];
-			$alumno = $_POST["G".$i];#grupo
+			$group = $_POST["G".$j];
+			$alumno = $_POST["GA".$j];#grupo
 
-			$idGrupos[$i] = $_POST["G".$i];
-			$a->insert($b, $alumno, $group);
+			$idGrupos[$j] = $_POST["G".$j];
+
+			$a->insert($b, $group, $alumno);
 		}
-	}
+	
 
 	
 ?>

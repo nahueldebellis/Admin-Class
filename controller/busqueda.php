@@ -11,12 +11,12 @@
 	elseif(isset($_POST["Grupo"])){
 		$alumnos = $alum->byGroup($_POST["busqueda"]);
 	}
-	/*elseif(isset($_POST["Promedio"])){
-		#$alumnos = $alum->by
+	elseif(isset($_POST["Promedio"])){
+		$alumnos = $alum->byProm();
 	}
 	else{
-		#$alumnos = $alum->getAll();
-	}*/
+		$alumnos = $alum->getAll();
+	}
 
 
 ?>

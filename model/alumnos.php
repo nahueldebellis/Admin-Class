@@ -3,13 +3,13 @@
 	# Falta crear por clases la busqueda a la base de datos
 
 	class Alumnos{
-		public $server = "localhost";
-		public $user = "root";
-		public $pass = "";
-		public $db = "Grupos";
+		private $server = "localhost";
+		private $user = "root";
+		private $pass = "";
+		private $db = "Grupos";
 
 
-		public $conn;
+		private $conn;
 
 		public function __construct(){
 			 $this->conn = new mysqli($this->server, $this->user, $this->pass, $this->db);
@@ -20,6 +20,19 @@
 			if(!$this->conn->query($sql)){
 				echo "<br>".$conn->error."<br>";
 			}
+		}
+
+		public function getAll(){
+			$res = array();
+			$i = 0;
+			$sql = "select * from groups";
+			$result = $this->conn->query($sql);
+			while($row = $result->fetch_assoc()){
+				$res[$i] = $row;
+				$i++;
+			}
+			$this->closeConn();
+			return $res;
 		}
 
 		public function byName($name){
@@ -46,6 +59,10 @@
 			}
 			$this->closeConn();
 			return $res;
+		}
+
+		public function byProm(){
+			$res = array();
 		}
 
 		private function closeConn(){
