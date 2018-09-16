@@ -9,13 +9,21 @@
 		<h1>AClass</h1>
 		<nav>
 			<ul>
-				<li><a href="public/">Registro de alumnos y grupos</a></li>
+				<li><a onclick="h()" href="#h">Registro de alumnos</a></li>
 				<li><a href="busqueda.php">Busquedas y modificaciones</a></li>
-				<li><a href="#">Acerca de nosotros</a></li>
+				<li><a href="#j">Acerca de nosotros</a></li>
 			</ul>
 		</nav>
 	</header>
-	
+	<div id="visible">
+		<form method="GET" action="registro.php">
+			<label>Ingrese el nombre del curso: </label>
+			<input type="text" name="curso" placeholder="Curso" autocomplete="off"><br>
+			<label>Ingrese la cantidad de alumnos: </label>
+			<input type="text" name="CantAlumnos" id="CantAlumnos" placeholder="Cantidad de alumnos" autocomplete="off"><br>
+			<input type="submit" value="Submit">
+		</form>
+	</div>
 	<!--<aside>
 		<p class="aside-p">
 			Este es un programa que permite la administracion de una clase,
@@ -23,6 +31,17 @@
 			alumnos y su rendimiento
 		</p>
 	</aside>-->
+	<script type="text/javascript">
+		window.addEventListener("load", function(){
+				let v = document.getElementById("visible");
+				v.style.display = "none";
+			});
 
+			function h(){
+				let v = document.getElementById("visible");
+				v.style.display = "block";
+			}
+		
+	</script>
 </body>
 </html>
