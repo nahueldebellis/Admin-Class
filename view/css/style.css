@@ -1,6 +1,6 @@
 *, body{
-	margin:50px;
-	padding:50px;
+	margin:0;
+	padding:0;
 }
 body{
 	color:#1C2833;
@@ -26,10 +26,6 @@ header nav li a{
 	color:#7D6608;
 }
 
-aside{
-	width: 200px;
-	float:right;
-}
 
 .center{
 	text-align: center;

@@ -15,7 +15,7 @@
 			</ul>
 		</nav>
 	</header>
-	<div id="visible">
+	<div id="visible" style="display:none;">
 		<form method="GET" action="registro.php">
 			<label>Ingrese el nombre del curso: </label>
 			<input type="text" name="curso" placeholder="Curso" autocomplete="off"><br>
@@ -24,19 +24,8 @@
 			<input type="submit" value="Submit">
 		</form>
 	</div>
-	<!--<aside>
-		<p class="aside-p">
-			Este es un programa que permite la administracion de una clase,
-			ya sea desde cargar notas hasta obtener estadisticas de los 
-			alumnos y su rendimiento
-		</p>
-	</aside>-->
-	<script type="text/javascript">
-		window.addEventListener("load", function(){
-				let v = document.getElementById("visible");
-				v.style.display = "none";
-			});
 
+	<script type="text/javascript">
 			function h(){
 				let v = document.getElementById("visible");
 				v.style.display = "block";

@@ -3,6 +3,8 @@
 	$a = new Alumnos();
 
 	$max = $_GET["g"];
+	$curso = $_GET["c"];
+	$id = $a->insertCurso($curso);
 	$alumnos = array();
 	$idGrupos = array();
 		for($j=1; $j <= $max; $j++){
@@ -12,12 +14,12 @@
 			else{
 				$b = 0;
 			}
-			$group = $_POST["G".$j];
-			$alumno = $_POST["GA".$j];#grupo
+			$alumno = $_POST["GA".$j];
+			$apellido = $_POST["AP".$j];
 
 			$idGrupos[$j] = $_POST["G".$j];
-
-			$a->insert($b, $group, $alumno);
+			echo "$alumno ->>>> $apellido";
+			$a->insertAlumno($b, $alumno, $apellido, $id["id"]);
 		}
 	
 

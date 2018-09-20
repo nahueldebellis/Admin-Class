@@ -21,20 +21,23 @@
 			</div>
 			<br>
 			<table border="1">
-				<th>Presencia</th>
-				<th>Nombre</th>
-				<th>Grupo</th>
-				<th></th>
 
 				<?php  
 				foreach($alumnos as &$a){
-					echo "<tr>";
 					foreach ($a as $key => $value) {
-					?>
-							<td><?php echo "$value"; ?></td>
-						<?php
+						$id = $a["id"];
+						if(!($key == "id"))
+							echo "<th>$key</th>";
 					}
-					echo "<td><a href='#'>Cambiar</a></td>";
+					echo "<th></th><tr>";
+					foreach ($a as $key => $value) {
+						if(!($key == "id")){
+					?>
+							<td><a onclick="cambio('<?php echo "$key"; ?>', <?php echo "$id"; ?>)"><?php echo "$value"; ?></a></td>
+						<?php
+						}
+					}
+					echo "<td><a onclick='agregarNota($id)'>Agregar nota</a></td>";
 					echo "</tr>";
 					
 				}
@@ -46,7 +49,34 @@
 		
 	</body>
 	<script type="text/javascript">
-		
+		function cambio(strCambio, id){
+			if(strCambio != "notas"){
+				let change = prompt("Ingrese el cambio: ");
+			}
+			else{
+				let change = prompt("Ingrese las notas separadas por espacios: ");
+			}
+			let ajax = new XMLHttpRequest();
+			ajax.onreadystatechange = function(){
+				if(this.status === 200 && this.readyState === 4){
+					let r = this.responseText;
+				}
+			}
+			ajax.open("GET", "/jaja.php", true);
+			ajax.send("q=${strCambio}&id=${id}&c=${change}");
+		}
+
+		function agregarNota(strId){
+			let change = prompt("Nueva nota: ");
+			let ajax = new XMLHttpRequest();
+			ajax.onreadystatechange = function(){
+				if(this.status === 200 && this.readyState === 4){
+					let r = this.responseText;
+				}
+			}
+			ajax.open("GET", "/jaja.php", true);
+			ajax.send("q=nota&id=${strId}&c=${change}");
+		}
 		
 	</script>
 </html>
