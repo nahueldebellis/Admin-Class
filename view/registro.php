@@ -1,9 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Grupos</title>
+	<title>Grupos</title><link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
+		<header>
+			<h1>AClass</h1>
+			<nav>
+				<ul>
+					<li><a href="index.php">Inicio</a></li>
+					<li><a href="#j">Acerca de nosotros</a></li>
+				</ul>
+			</nav>
+		</header>
 <?php
 	$alumnos = $_GET["CantAlumnos"];
 	$curso = $_GET["curso"];
