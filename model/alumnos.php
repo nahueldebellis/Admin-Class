@@ -138,6 +138,13 @@
 			return $res;
 		}
 
+		public function newGrupo($value){
+			$sql = "INSERT INTO grupos (nombre) VALUES ('$value')";
+			if(!$this->conn->query($sql)){
+				echo $this->conn->error;
+			}
+		}
+
 		public function aGrupo($id, $value){
 			$sql = "UPDATE grupos g
 					INNER JOIN alumnos a ON g.id=a.id_grupo
@@ -147,6 +154,22 @@
 				echo $this->conn->error;
 			}
 			$this->closeConn();
+		}
+
+		public function cambiarGrupo($id, $value){
+			$sql = "SELECT id FROM grupos WHERE nombre='$value'";
+			$result = $this->conn->query($sql);
+			$row = $result->fetch_assoc();
+			$idGrupo = $row["id"];
+
+			$sql = "UPDATE alumnos a
+					INNER JOIN grupos g ON a.id_grupo=g.id
+					SET a.id_grupo=$idGrupo
+					WHERE a.id=$id";
+			if(!$this->conn->query($sql)){
+				echo "<h1>No Existe Grupo</h1>";
+			}
+			
 		}
 
 		public function actualizar($key, $id, $valor){
@@ -201,6 +224,64 @@
 			if(!$this->conn->query($sql)){
 				echo "<br>".$this->conn->error."<br>";
 			}
+		}
+
+		public function cantAlumnos($curso){
+			$sql = "SELECT COUNT(a.nombre) AS cantidad FROM alumnos a INNER JOIN curso c ON a.id_curso=c.id WHERE c.nombre='$curso'";
+			$r = $this->conn->query($sql);
+			$row = $r->fetch_assoc();
+			return $row["cantidad"];
+		}
+
+		public function getAlumnos($curso){
+			$i = 0;
+			$sql = "SELECT @numero";
+			if(!$this->conn->query($sql)){
+					echo $this->conn->error;
+			}
+			$sql = "SET @numero = 0";
+			if(!$this->conn->query($sql)){
+					echo $this->conn->error;
+			}
+			$sql = "SELECT @numero:=@numero+1 as pos, a.nombre, a.apellido FROM alumnos a INNER JOIN curso c ON a.id_curso=c.id WHERE c.nombre='$curso'";
+			$r = $this->conn->query($sql);
+			while($row = $r->fetch_assoc()){
+				$res[$i] = $row;
+				$i++;
+			}
+			return $res;
+		}
+		public function getIdAlumno($nombre, $apellido){
+			$sql = "SELECT a.id FROM alumnos a WHERE a.nombre='$nombre' AND a.apellido='$apellido'";
+			$r = $this->conn->query($sql);
+			$row = $r->fetch_Assoc();
+			return $row["id"];
+		}
+
+		public function getAlumnosProm($curso){
+			$i = 0;
+			$sql = "SELECT @numero";
+			if(!$this->conn->query($sql)){
+					echo $this->conn->error;
+			}
+			$sql = "SET @numero = 0";
+			if(!$this->conn->query($sql)){
+					echo $this->conn->error;
+			}
+			
+			$sql = "SELECT @numero:=@numero+1 as pos, a.nombre, a.apellido, AVG(n.nota) AS Promedio
+			 		FROM alumnos a 
+			 		INNER JOIN curso c ON a.id_curso=c.id 
+			 		INNER JOIN notas n ON a.id=n.id_alumno
+			 		WHERE c.nombre='$curso'
+			 		GROUP BY a.nombre, a.apellido ORDER BY Promedio DESC";
+
+			$r = $this->conn->query($sql);
+			while($row = $r->fetch_assoc()){
+				$res[$i] = $row;
+				$i++;
+			}
+			return $res;
 		}
 
 		public function closeConn(){

@@ -21,7 +21,7 @@
 			</ul>
 			<br>
 			<ul>
-				<li><a onclick="h()" href="#h">Registro de alumnos</a></li>
+				<li><a onclick="h()" href="#h">Registro de Curso</a></li>
 			</ul>
 		</nav>
 	</header>

@@ -24,6 +24,15 @@ header nav li a{
 	text-decoration: none;
 	color:#1C2833;
 }
+.contenido{
+	float: left;
+	width: 45%;
+	overflow: scroll;
+}
+.busqueda{
+	float:left;
+	margin-right: 5%;
+}
 
 
 .center{
@@ -35,6 +44,8 @@ header nav li a{
 	margin-left: auto;
 	margin-top: 15%;
 }
+
+
 
 
 .color-1 {color: #ffffff;}

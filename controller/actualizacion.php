@@ -9,8 +9,11 @@
 		$j = json_decode($cambio);
 		$a->aNotas($id, $j);
 	}
-	elseif ($cambiar == "grupo") {
+	elseif($cambiar == "grupos"){
 		$a->aGrupo($id, $cambio);
+	}
+	elseif ($cambiar == "grupo") {
+		$a->cambiarGrupo($id, $cambio);
 	}
 	elseif($cambiar == "nnotas"){
 		$a->agregarNota($id, $cambio);
