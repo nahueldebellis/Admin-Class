@@ -59,4 +59,9 @@
 			}
 		}
 	}
+	elseif(isset($_POST["Ngrupo"])){
+		$nombre = $_POST["Ngrupo"];
+		$a->newGrupo($nombre);
+		header("Location: ../view/busqueda.php?q=".$_POST["curso"]);
+	}
 ?>

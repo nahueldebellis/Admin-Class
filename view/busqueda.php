@@ -68,6 +68,12 @@
 
 					<button>Armar grupos</button>
 				</form>
+				<form method="POST" action="../controller/grupos.php">
+					<input type="hidden" value="<?php echo $_GET["q"] ?>" name="curso">
+					<label>Nuevo grupo</label>
+					<input type="text" name="Ngrupo" placeholder="Nombre del grupo">
+					<button>Agregar Grupo</button>
+				</form>
 			</div>
 			<br>
 			<table style="float:left;" border="1">
@@ -144,7 +150,7 @@
 		}
 
 		function cambiarGrupo(id){
-			let change = prompt("Nuevo nombre: ");
+			let change = prompt("Ingrese el nuevo nombre del grupo: ");
 			let ajax = new XMLHttpRequest();
 			ajax.onreadystatechange = function(){
 				if(this.Status === 200 && this.readyState === 4){
